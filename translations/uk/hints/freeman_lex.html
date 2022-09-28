@@ -1,0 +1,138 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Я уявлення не маю, як почати розв'язування цієї місії.
+    </div>
+    <div class="answer">
+        Давай продовжимо розв'язок з останньої підказки попередньої місії в серії.
+        <br />
+        <br />
+        <pre class="brush: python">
+def is_acceptable_password(password: str) -> bool:
+
+    cond1 = len(password) > 6
+    cond2 = any(char.isdigit() for char in password)
+    cond3 = any(char.isalpha() for char in password)
+    if len(password) > 9: # cond4    
+        cond2 = cond3 = True
+
+    return all([cond1, cond2, cond3]) 
+        </pre>
+        У цій місії тобі слід додати до розв'язку перевірку, чи містить твій рядок
+        слово 'password' у будь-якому регістрі.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        З чого мені почати?
+    </div>
+    <div class="answer">
+        Щоб перевірити, чи є один рядок частиною іншого, тобі достатньо використати
+        оператор 'in':
+        <br />
+        <br />
+        <pre class="brush: python">
+'password' in password
+# оскільки тобі потрібно, щоб слова 'password' не було, верхній рядок матиме вигляд:
+'password' not in password        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Добре. Але ж у такий спосіб я перевірю маленькі букви. Як перевірити великі
+        чи змішане слово?
+    </div>
+    <div class="answer">
+        Немає потреби перевіряти це все. Використай рядковий метод <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">str.lower()</a>.
+        Він перетворює всі літери в рядку на маленькі і ти можеш перевірити присутність
+        слова лише раз:
+        <br />
+        <br />
+        <pre class="brush: python">
+cond5 = 'password' not in password.lower()
+# ти також можеш перетворити всі букви на великі з str.upper(). Тоді:
+cond5 = 'PASSWORD' not in password.upper()
+        </pre>
+        І не забудь додати твою нову умову в функцію all() в return.
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        То як мій остаточний розв'язок має виглядати?
+    </div>
+    <div class="answer">
+        Ось він:
+        <br />
+        <br />
+        <pre class="brush: python">
+def is_acceptable_password(password: str) -> bool:
+
+    cond1 = len(password) > 6
+    cond2 = any(char.isdigit() for char in password)
+    cond3 = any(char.isalpha() for char in password)
+    if len(password) > 9: # cond4    
+        cond2 = cond3 = True
+    cond5 = 'password' not in password.lower()
+        
+    return all([cond1, cond2, cond3, cond5])
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Покажи мені більше розв'язків!<br />
+        Адже я хочу стати справжнім Python Ніндзею!
+    </div>
+    <div class="answer">
+        Звісно, тримай!<br />
+        Розв'язок у дещо протилежному стилі: перевірка кожної умови, якщо вона не 
+        True, негайне повернення False. Якщо всі умови True (те, що тобі потрібно)
+        - повернення True в кінці:
+        <br />
+        <br />
+        <pre class="brush: python">
+def is_acceptable_password(password:str)->bool:
+
+    if not len(password) > 6:
+        return False
+    if not len(password) > 9:
+        if not any(x.isdigit() for x in password):
+            return False
+        if not any(x.isalpha() for x in password):
+            return False
+    if 'password' in password.lower():
+        return False
+
+    return True
+        </pre>
+        Всі умови відразу в виразі return з використанням модуля re для пошуку
+        цифри і літери. Метод 'Find' повертає початковий індекс або -1 якщо рядок
+        не є частиною іншого рядка: 
+        <br />
+        <br />
+        <pre class="brush: python">
+import re
+
+
+def is_acceptable_password(password: str) -> bool:
+
+    return bool(
+        (len(password) > 6 and re.search('\d', password) and re.search('[a-z]', password) 
+        or len(password) > 9) 
+        and (password.lower().find('password')) == -1)  
+        </pre>
+        <br />
+        <br />
+        Тисни "Best solutions" в меню місії і ти побачиш багато інших цікавих розв'язків!
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Дякую! Тепер я знаю і розумію більше! Все працює як слід!
+    </div>
+    <div class="answer">
+        Приємно це чути! Спробуй розв'язати останню місію в цій серії.
+    </div>
+</div>
+</body>
