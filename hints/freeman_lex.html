@@ -1,13 +1,14 @@
 <body data-author="freeman_lex">
 <div class="question-answer">
     <div class="question">
-        I have no idea how to start solving this mission.
+        <p>
+            I have no idea how to start solving this mission.
+        </p>
     </div>
     <div class="answer">
-        Let's continue with the solution from hints of the previous mission in
-        the series.
-        <br />
-        <br />
+        <p>
+            Let's continue with the solution from hints of the previous mission in the series.
+        </p>
         <pre class="brush: python">
 def is_acceptable_password(password: str) -> bool:
 
@@ -19,18 +20,21 @@ def is_acceptable_password(password: str) -> bool:
 
     return all([cond1, cond2, cond3]) 
         </pre>
-        In this mission you should add to this solution checking if your string
-        consists word 'password' in any case.
+        <p>
+            In this mission you should add to this solution checking if your string consists word 'password' in any case.
+        </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        What should I start from?
+        <p>
+            What should I start from?
+        </p>
     </div>
     <div class="answer">
-        To check if one string is a part of the other, you may just use 'in' operator:
-        <br />
-        <br />
+        <p>
+            To check if one string is a part of the other, you may just use <b class="code">in</b> operator:
+        </p>
         <pre class="brush: python">
 'password' in password
 # since you need word 'password' not to be present, above checking will be:
@@ -40,30 +44,34 @@ def is_acceptable_password(password: str) -> bool:
 </div>
 <div class="question-answer">
     <div class="question">
-        Ok. But I check lowercase in such a way. How to check uppercase, mixed?
+        <p>
+            Ok. But I check lowercase in such a way. How to check uppercase, mixed?
+        </p>
     </div>
     <div class="answer">
-        No need to check all cases. Use string method <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">str.lower()</a>.
-        It transforms the string into lowercase and you may check word presence
-        only once:
-        <br />
-        <br />
+        <p>
+            No need to check all cases. Use string method <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">str.lower()</a>. It transforms the string into lowercase and you may check word presence only once:
+        </p>
         <pre class="brush: python">
 cond5 = 'password' not in password.lower()
 # you may transform string into uppercase with str.upper() as well. Then:
 cond5 = 'PASSWORD' not in password.upper()
         </pre>
-        And don't forget to add your new condition into all() function in return.
+        <p>
+            And don't forget to add your new condition into <b class="code">all()</b> function in <b class="code">return</b>.
+        </p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        So, how my final solution should look like?
+        <p>
+            So, how my final solution should look like?
+        </p>
     </div>
     <div class="answer">
-        Here it is:
-        <br />
-        <br />
+        <p>
+            Here it is:
+        </p>
         <pre class="brush: python">
 def is_acceptable_password(password: str) -> bool:
 
@@ -80,17 +88,20 @@ def is_acceptable_password(password: str) -> bool:
 </div>
 <div class="question-answer">
     <div class="question">
-        Show me more solutions!<br />
-        'Cause I wanna be a real Python Ninnjaa!
+        <p>
+            Show me more solutions!<br />
+            'Cause I wanna be a real 🥇 Python Ninnjaa!
+        </p>
     </div>
     <div class="answer">
-        Sure, grab it!<br />
-        Solution with opposite style: checking each condition, if it is not True,
-        immediate False return. If they all True (what you need) - return True at the end:
-        <br />
-        <br />
+        <p>
+            Sure, grab it!
+        </p>
+        <p>
+            Solution with opposite style: checking each condition, if it is not <b class="code">True</b>, immediate <b class="code">False</b> return. If they all <b class="code">True</b> (what you need) - return <b class="code">True</b> at the end:
+        </p>
         <pre class="brush: python">
-def is_acceptable_password(password:str)->bool:
+def is_acceptable_password(password: str) -> bool:
 
     if not len(password) > 6:
         return False
@@ -104,11 +115,9 @@ def is_acceptable_password(password:str)->bool:
 
     return True
         </pre>
-        All conditions directly in return statement with using re module for
-        digit and letter finding. 'Find' method return start index or -1 if
-        substring is not in string: 
-        <br />
-        <br />
+        <p>
+            All conditions directly in <b class="code">return</b> statement with using <b class="code">re</b> module for digit and letter finding. <b class="code">find</b> method return start index or -1 if substring is not in string:
+        </p>
         <pre class="brush: python">
 import re
 
@@ -120,16 +129,21 @@ def is_acceptable_password(password: str) -> bool:
         or len(password) > 9) 
         and (password.lower().find('password')) == -1)  
         </pre>
-        Click "Best solutions" at mission menu and see a lot of other
-        interesting solutions!
+        <p><b>
+            Click "Best solutions" at mission menu and see a lot of other interesting solutions!
+        </b></p>
     </div>
 </div>
 <div class="question-answer">
     <div class="question">
-        Thanks! I know and understand more now! Everything works fine!
+        <p>
+            Thanks! I know and understand more now! Everything works fine!
+        </p>
     </div>
     <div class="answer">
-        Glad to hear it! Try to solve the last mission in the series!
+        <p>
+            👍 Glad to hear it! Try to solve the last mission in the series!
+        </p>
     </div>
 </div>
 </body>

@@ -52,12 +52,12 @@ TESTS = {
         {
             "input": ["pass1234word"],
             "answer": True
-        }
+        },
     ],
     "Extra": [
         {
             "input": ["this is password"],
             "answer": False
-        }
+        },
     ]
 }
