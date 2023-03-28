@@ -72,6 +72,7 @@ cond5 = 'PASSWORD' not in password.upper()
         <p>
             Ось він:
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def is_acceptable_password(password: str) -> bool:
 
@@ -84,6 +85,7 @@ def is_acceptable_password(password: str) -> bool:
         
     return all([cond1, cond2, cond3, cond5])
         </pre>
+        </div>
     </div>
 </div>
 <div class="question-answer">
@@ -100,6 +102,7 @@ def is_acceptable_password(password: str) -> bool:
         <p>
             Розв'язок у дещо протилежному стилі: перевірка кожної умови, якщо вона не <b class="code">True</b>, негайне повернення <b class="code">False</b>. Якщо всі умови <b class="code">True</b> (те, що тобі потрібно) - повернення <b class="code">True</b> в кінці:
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def is_acceptable_password(password:str)->bool:
 
@@ -115,9 +118,11 @@ def is_acceptable_password(password:str)->bool:
 
     return True
         </pre>
+        </div>
         <p>
             Всі умови відразу в виразі <b class="code">return</b> з використанням модуля <b class="code">re</b> для пошуку цифри і літери. Метод <b class="code">find</b> повертає початковий індекс або -1 якщо рядок не є частиною іншого рядка:
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 import re
 
@@ -129,6 +134,7 @@ def is_acceptable_password(password: str) -> bool:
         or len(password) > 9) 
         and (password.lower().find('password')) == -1)  
         </pre>
+        </div>
         <p><b>
             Тисни "Best solutions" в меню місії і ти побачиш багато інших цікавих розв'язків!
         </b></p>
