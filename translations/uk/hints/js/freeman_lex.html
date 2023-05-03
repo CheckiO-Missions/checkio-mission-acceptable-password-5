@@ -1,0 +1,154 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Я уявлення не маю, як почати вирішувати цю місію.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Давай продовжимо з остаточного рішення з підказок до попередньої місії в серії.
+        </p>
+        <pre class="brush: javascript">
+function isAcceptablePassword(password: string): boolean {
+
+    const cond1 = password.length > 6;
+    var cond2 = /\d/.test(password);
+    var cond3 = /\D/.test(password);
+    if (password.length > 9) cond2 = cond3 = true; // cond 4
+    
+    return !([cond1, cond2, cond3].includes(false));
+}
+        </pre>
+        <p>
+            У цій місії ти маєш додати до свого рішення перевірку, чи рядок включає слово "password" у будь-якому регістрі.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            З чого мені почати?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Так само, як ти раніше шукав цифру та не цифровий символ (літеру), ти можеш шукати слово "password" всередині <b class="code">password</b>. 
+        </p>
+        <pre class="brush: javascript">
+const cond5 = /password/.test(password);  
+        </pre>
+        <p>
+            
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Добре. Але я так перевіряю малі літери. Як перевірити великі, змішане слово?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+        Щоб зробити пошук нечутливим до регістру, додай модифікатор "і" до шаблону. Ти також маєш інвертувати результат, оскільки потрібно, щоб слово "password" НЕ було присутнє.
+        </p>
+        <pre class="brush: javascript">
+const cond5 = !(/password/i.test(password));
+        </pre>
+        <p>
+            І не забудь додати свою нову умову в масив в <b class="code">return</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Отже, як має виглядати моє остаточне рішення для цієї місії?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Ось воно:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function isAcceptablePassword(password: string): boolean {
+
+    const cond1 = password.length > 6;
+    var cond2 = /\d/.test(password);
+    var cond3 = /\D/.test(password);
+    if (password.length > 9) cond2 = cond3 = true; // cond 4
+    const cond5 = !(/password/i.test(password));
+    
+    return !([cond1, cond2, cond3, cond5].includes(false));
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<!-- <div class="question-answer">
+    <div class="question">
+        <p>
+            Show me more solutions!<br />
+            'Cause I wanna be a real 🥇 javascript Ninnjaa!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Sure, grab it!
+        </p>
+        <p>
+            Solution with opposite style: checking each condition, if it is not <b class="code">True</b>, immediate <b class="code">False</b> return. If they all <b class="code">True</b> (what you need) - return <b class="code">True</b> at the end:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+def is_acceptable_password(password: str) -> bool:
+
+    if not len(password) > 6:
+        return False
+    if not len(password) > 9:
+        if not any(x.isdigit() for x in password):
+            return False
+        if not any(x.isalpha() for x in password):
+            return False
+    if 'password' in password.lower():
+        return False
+
+    return True
+        </pre>
+        </div>
+        <p>
+            All conditions directly in <b class="code">return</b> statement with using <b class="code">re</b> module for digit and letter finding. <b class="code">find</b> method return start index or -1 if substring is not in string:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+import re
+
+
+def is_acceptable_password(password: str) -> bool:
+
+    return bool(
+        (len(password) > 6 and re.search('\d', password) and re.search('[a-z]', password) 
+        or len(password) > 9) 
+        and (password.lower().find('password')) == -1)  
+        </pre>
+        </div>
+        <p><b>
+            Click "Best solutions" at mission menu and see a lot of other interesting solutions!
+        </b></p>
+    </div>
+</div> -->
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Дякую! Тепер я знаю і розумію більше! Все працює як слід!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            👍 Приємно це чути! Спробуй вирішити останню місію в цій серії!
+        </p>
+    </div>
+</div>
+</body>
