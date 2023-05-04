@@ -87,58 +87,30 @@ function isAcceptablePassword(password: string): boolean {
         </div>
     </div>
 </div>
-<!-- <div class="question-answer">
+<div class="question-answer">
     <div class="question">
         <p>
-            Show me more solutions!<br />
-            'Cause I wanna be a real 🥇 javascript Ninnjaa!
+            Покажи мені більше розв'язків!<br />
+            Адже я хочу стати справжнім 🥇 Героєм Javascript!
         </p>
     </div>
     <div class="answer">
         <p>
-            Sure, grab it!
+            Звісно, тримай!
         </p>
         <p>
-            Solution with opposite style: checking each condition, if it is not <b class="code">True</b>, immediate <b class="code">False</b> return. If they all <b class="code">True</b> (what you need) - return <b class="code">True</b> at the end:
+            Тут написана анонімна функція з перевіркою того, що довжина перевищує 9 АБО є цифра і не цифровий символ I довжина більше 6. Крім того, слово "password" не присутнє в жодному регістрі.
         </p>
         <div class="spoiler">
         <pre class="brush: javascript">
-def is_acceptable_password(password: str) -> bool:
-
-    if not len(password) > 6:
-        return False
-    if not len(password) > 9:
-        if not any(x.isdigit() for x in password):
-            return False
-        if not any(x.isalpha() for x in password):
-            return False
-    if 'password' in password.lower():
-        return False
-
-    return True
-        </pre>
-        </div>
-        <p>
-            All conditions directly in <b class="code">return</b> statement with using <b class="code">re</b> module for digit and letter finding. <b class="code">find</b> method return start index or -1 if substring is not in string:
-        </p>
-        <div class="spoiler">
-        <pre class="brush: javascript">
-import re
-
-
-def is_acceptable_password(password: str) -> bool:
-
-    return bool(
-        (len(password) > 6 and re.search('\d', password) and re.search('[a-z]', password) 
-        or len(password) > 9) 
-        and (password.lower().find('password')) == -1)  
+var isAcceptablePassword = (p, l = p.length) => (l > 9 || /\d\D|\D\d/.test(p) && l > 6) && !/password/i.test(p)
         </pre>
         </div>
         <p><b>
-            Click "Best solutions" at mission menu and see a lot of other interesting solutions!
+            Тисни "Best solutions" в меню місії і ти побачиш багато інших цікавих розв'язків!
         </b></p>
     </div>
-</div> -->
+</div>
 <div class="question-answer">
     <div class="question">
         <p>
