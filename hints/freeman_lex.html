@@ -130,7 +130,7 @@ import re
 def is_acceptable_password(password: str) -> bool:
 
     return bool(
-        (len(password) > 6 and re.search('\d', password) and re.search('[a-z]', password) 
+        (len(password) > 6 and re.search('\d', password) and re.search('[a-zA-Z]', password) # need to check for upper and lowercase letters otherwise a password like "101CATS" comes back false - could you also do password.lower() maybe?
         or len(password) > 9) 
         and (password.lower().find('password')) == -1)  
         </pre>
