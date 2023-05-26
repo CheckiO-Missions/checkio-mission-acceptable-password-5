@@ -1,0 +1,155 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Je n'ai aucune idée de la manière de commencer à résoudre cette mission.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Continuons avec la solution des indices de la mission précédente de la série.
+        </p>
+        <pre class="brush: python">
+def is_acceptable_password(password: str) -&gt; bool:
+
+    cond1 = len(password) &gt; 6
+    cond2 = any(char.isdigit() for char in password)
+    cond3 = any(char.isalpha() for char in password)
+    if len(password) &gt; 9: # cond4    
+        cond2 = cond3 = True
+
+    return all([cond1, cond2, cond3]) 
+        </pre>
+        <p>
+            Dans le cadre de cette mission, vous devez ajouter à cette solution la vérification de la présence du mot 'password' dans votre chaîne de caractères.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Par quoi dois-je commencer?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Pour vérifier si une chaîne fait partie de l'autre, vous pouvez utiliser l'opérateur <b class="code">in</b>:
+        </p>
+        <pre class="brush: python">
+'password' dans password
+# Comme le mot "password" ne doit pas être présent, la vérification ci-dessus sera effectuée:
+'password' n'est pas dans password        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            D'accord, mais je vérifie les minuscules de cette manière. Mais je vérifie les minuscules de cette manière. Comment vérifier les majuscules, les mixtes?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Il n'est pas nécessaire de vérifier tous les cas. Utilisez la méthode str <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">.lower()</a>. Elle transforme la chaîne en minuscules et vous ne pouvez vérifier la présence d'un mot qu'une seule fois:
+        </p>
+        <pre class="brush: python">
+cond5 = 'password' not in password.lower()
+# Vous pouvez également transformer la chaîne en majuscules à l'aide de str.upper(). Dans ce cas, vous pouvez utiliser str.upper() pour transformer la chaîne en majuscules:
+cond5 = 'MOT DE PASSE' not in password.upper()
+        </pre>
+        <p>
+            Et n'oubliez pas d'ajouter votre nouvelle condition dans la fonction <b class="code">all()</b> en <b class="code">retour</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Alors, à quoi devrait ressembler ma solution finale?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            La voici:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_acceptable_password(password: str) -&gt; bool:
+
+    cond1 = len(password) &gt; 6
+    cond2 = any(char.isdigit() for char in password)
+    cond3 = any(char.isalpha() for char in password)
+    if len(password) &gt; 9: # cond4    
+        cond2 = cond3 = True
+    cond5 = 'password' not in password.lower()
+        
+    return all([cond1, cond2, cond3, cond5])
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Montrez-moi d'autres solutions!<br />
+            parce que je veux être une vraie 🥇 Python Ninnjaa!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Bien sûr, prenez-le!
+        </p>
+        <p>
+            Solution de style opposé: vérification de chaque condition, si elle n'est pas <b class="code">True</b>, retour immédiat de <b class="code">False</b>. Si elles sont toutes <b class="code">vraies</b> (ce dont vous avez besoin) - retour de <b class="code">True</b> à la fin:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_acceptable_password(password: str) -&gt; bool:
+
+    if not len(password) &gt; 6:
+        return False
+    if not len(password) &gt; 9:
+        if not any(x.isdigit() for x in password):
+            retournez Faux
+        if not any(x.isalpha() for x in password):
+            return False
+    si 'password' dans password.lower():
+        return False
+
+    retournez Vrai
+        </pre>
+        </div>
+        <p>
+            Toutes les conditions se retrouvent directement dans l'instruction <b class="code">return</b> avec l'utilisation du module <b class="code">re</b> pour la recherche de chiffres et de lettres. La méthode <b class="code">find</b> renvoie l'index de départ ou -1 si la sous-chaîne n'est pas dans la chaîne:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def is_acceptable_password(password: str) -&gt; bool:
+
+    return bool(
+        (len(password) &gt; 6 and re.search('\d', password) and re.search('[a-zA-Z]', password) 
+        ou len(password) &gt; 9) 
+        et (password.lower().find('password')) == -1)  
+        </pre>
+        </div>
+        <p><b>
+            Cliquez sur "Meilleures solutions" dans le menu de la mission et découvrez de nombreuses autres solutions intéressantes!
+        </b></p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Merci beaucoup! Je sais et je comprends mieux maintenant! Tout fonctionne bien!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            👍 Heureux de l'apprendre! Essayez de résoudre la dernière mission de la série!
+        </p>
+    </div>
+</div>
+</body>
