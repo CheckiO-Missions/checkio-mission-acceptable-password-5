@@ -55,7 +55,7 @@ def is_acceptable_password(password: str) -&gt; bool:
         <pre class="brush: python">
 cond5 = 'password' not in password.lower()
 # Vous pouvez également transformer la chaîne en majuscules à l'aide de str.upper(). Dans ce cas, vous pouvez utiliser str.upper() pour transformer la chaîne en majuscules:
-cond5 = 'MOT DE PASSE' not in password.upper()
+cond5 = 'PASSWORD' not in password.upper()
         </pre>
         <p>
             Et n'oubliez pas d'ajouter votre nouvelle condition dans la fonction <b class="code">all()</b> en <b class="code">retour</b>.
@@ -110,7 +110,7 @@ def is_acceptable_password(password: str) -&gt; bool:
         return False
     if not len(password) &gt; 9:
         if not any(x.isdigit() for x in password):
-            retournez Faux
+            return Faux
         if not any(x.isalpha() for x in password):
             return False
     si 'password' dans password.lower():
@@ -131,8 +131,8 @@ def is_acceptable_password(password: str) -&gt; bool:
 
     return bool(
         (len(password) &gt; 6 and re.search('\d', password) and re.search('[a-zA-Z]', password) 
-        ou len(password) &gt; 9) 
-        et (password.lower().find('password')) == -1)  
+        or len(password) &gt; 9) 
+        and (password.lower().find('password')) == -1)  
         </pre>
         </div>
         <p><b>
