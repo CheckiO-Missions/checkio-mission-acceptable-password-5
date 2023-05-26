@@ -17,7 +17,7 @@ function isAcceptablePassword(password: string): boolean {
     var cond3 = /\D/.test(password);
     if (password.length &gt; 9) cond2 = cond3 = true; // cond 4
     
-    return!([cond1, cond2, cond3].includes(false));
+    return !([cond1, cond2, cond3].includes(false));
 }
         </pre>
         <p>
@@ -33,14 +33,11 @@ function isAcceptablePassword(password: string): boolean {
     </div>
     <div class="answer">
         <p>
-            De la même manière que vous avez cherché les chiffres et les caractères non numériques, vous pouvez chercher le mot "mot de passe" dans le <b class="code">mot de passe</b>. 
+            De la même manière que vous avez cherché les chiffres et les caractères non numériques, vous pouvez chercher le mot "password" dans le <b class="code">password</b>. 
         </p>
         <pre class="brush: javascript">
 const cond5 = /password/.test(password); 
         </pre>
-        <p>
-            
-        </p>
     </div>
 </div>
 <div class="question-answer">
@@ -54,7 +51,7 @@ const cond5 = /password/.test(password);
             Pour rendre la recherche insensible à la casse, ajoutez le modificateur "i" au motif. Vous devriez également inverser le résultat, puisque vous n'avez PAS besoin que le mot "password" soit présent.
         </p>
         <pre class="brush: javascript">
-const5 =!(/password/i.test(password));
+const5 = !(/password/i.test(password));
         </pre>
         <p>
             Et n'oubliez pas d'ajouter votre nouvelle condition dans le tableau en <b class="code">retour</b>.
@@ -76,12 +73,12 @@ const5 =!(/password/i.test(password));
 function isAcceptablePassword(password: string): boolean {
 
     const cond1 = password.length &gt; 6;
-    var cond2 = /\D/.test(password);
+    var cond2 = /\d/.test(password);
     var cond3 = /\D/.test(password);
     if (password.length &gt; 9) cond2 = cond3 = true; // cond 4
     const cond5 =!(/password/i.test(password));
     
-    return!([cond1, cond2, cond3, cond5].includes(false));
+    return !([cond1, cond2, cond3, cond5].includes(false));
 }
         </pre>
         </div>
@@ -103,7 +100,7 @@ function isAcceptablePassword(password: string): boolean {
         </p>
         <div class="spoiler">
         <pre class="brush: javascript">
-var isAcceptablePassword = (p, l = p.length) =&gt; (l &gt; 9 || /\d\D|\D\d/.test(p) &amp;&amp; l &gt; 6) &amp;&amp;!/password/i.test(p)
+var isAcceptablePassword = (p, l = p.length) =&gt; (l &gt; 9 || /\d\D|\D\d/.test(p) &amp;&amp; l &gt; 6) &amp;&amp; !/password/i.test(p)
         </pre>
         </div>
         <p><b>
