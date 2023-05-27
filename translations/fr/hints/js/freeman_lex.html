@@ -13,7 +13,7 @@
 function isAcceptablePassword(password: string): boolean {
 
     const cond1 = password.length &gt; 6;
-    var cond2 = /\D/.test(password);
+    var cond2 = /\d/.test(password);
     var cond3 = /\D/.test(password);
     if (password.length &gt; 9) cond2 = cond3 = true; // cond 4
     
@@ -54,7 +54,7 @@ const cond5 = /password/.test(password);
 const5 = !(/password/i.test(password));
         </pre>
         <p>
-            Et n'oubliez pas d'ajouter votre nouvelle condition dans le tableau en <b class="code">retour</b>.
+            Et n'oubliez pas d'ajouter votre nouvelle condition dans le tableau en <b class="code">return</b>.
         </p>
     </div>
 </div>
