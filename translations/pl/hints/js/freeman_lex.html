@@ -1,0 +1,126 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Nie mam pojęcia, jak zacząć rozwiązywać tę misję.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Kontynuujmy z rozwiązaniem z podpowiedzi poprzedniej misji w serii.
+        </p>
+        <pre class="brush: javascript">
+function isAcceptablePassword(password: string): boolean {
+
+    const cond1 = password.length> 6;
+    var cond2 = /\d/.test(password);
+    var cond3 = /\D/.test(password);
+    if (password.length> 9) cond2 = cond3 = true; // cond 4
+    
+    return!([cond1, cond2, cond3].includes(false));
+}
+        </pre>
+        <p>
+            W tej misji należy dodać do rozwiązania sprawdzenie, czy ciąg znaków zawiera słowo "password".
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Od czego powinienem zacząć?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            W ten sam sposób, w jaki poprzednio szukali Państwo cyfry i znaku niebędącego cyfrą, mogą Państwo szukać słowa "password" wewnątrz <b class="code">password</b>. 
+        </p>
+        <pre class="brush: javascript">
+const cond5 = /password/.test(password);  
+        </pre>
+        <p>
+            
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ok. Ale w ten sposób sprawdzam małe litery. Jak sprawdzić wielkie litery, mieszane?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Aby wyszukiwanie nie uwzględniało wielkości liter, proszę dodać do wzorca modyfikator "i". Proszę również odwrócić wynik, ponieważ słowo "password" NIE musi być obecne.
+        </p>
+        <pre class="brush: javascript">
+const cond5 =!(/password/i.test(password));
+        </pre>
+        <p>
+            I proszę nie zapomnieć dodać nowego warunku do tablicy w <b class="code">return</b>.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Jak więc powinno wyglądać moje ostateczne rozwiązanie?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Oto ono:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function isAcceptablePassword(password: string): boolean {
+
+    const cond1 = password.length> 6;
+    var cond2 = /\d/.test(password);
+    var cond3 = /\D/.test(password);
+    if (password.length> 9) cond2 = cond3 = true; // cond 4
+    const cond5 =!(/password/i.test(password));
+    
+    return!([cond1, cond2, cond3, cond5].includes(false));
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Proszę pokazać mi więcej rozwiązań!<br />
+            bo chcę być prawdziwym 🥇 Javascript Hero!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Jasne, proszę łapać!
+        </p>
+        <p>
+            Oto anonimowa funkcja sprawdzająca, czy długość jest większa niż 9 LUB cyfra i nie-cyfra są obecne ORAZ długość jest większa niż 6. Dodatkowo, słowo "hasło" nie jest obecne w żadnym przypadku. 
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var isAcceptablePassword = (p, l = p.length) => (l> 9 || /\d\D|\D\d/.test(p) && l> 6) &&!/password/i.test(p)
+        </pre>
+        </div>
+        <p>
+            Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa jak należy!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            miło mi to słyszeć! Proszę spróbować rozwiązać ostatnią misję z serii!
+        </p>
+    </div>
+</div>
+</body>
