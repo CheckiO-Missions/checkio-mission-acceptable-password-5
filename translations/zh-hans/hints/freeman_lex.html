@@ -1,0 +1,155 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我不知道如何开始解决这个任务。
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            让我们继续从该系列的前一个任务的提示中寻找解决办法。
+        </p>
+        <pre class="brush: python">
+def is_acceptable_password(password: str) -> bool:
+
+    cond1 = len(password)> 6
+    cond2 = any(char.isdigit() for char in password)
+    cond3 = any(char.isalpha() for char in password)
+    if len(password)> 9: # cond4    
+        cond2 = cond3 = True
+
+    return all([cond1, cond2, cond3]) 
+        </pre>
+        <p>
+            在这个任务中，你应该在这个解决方案中加入检查你的字符串是否由 "密码 "一词组成。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我应该从哪些方面入手？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            要检查一个字符串是否是另一个字符串的一部分，你可以直接使用<b class="code">in</b> 操作符：
+        </p>
+        <pre class="brush: python">
+'password' in password
+# since you need word 'password' not to be present, above checking will be:
+'password' not in password        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            好的。但是我用这样的方式检查小写字母。如何检查大写字母，混合？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            没有必要检查所有的情况。使用字符串方法<a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">str.lower()</a> 。它将字符串转化为小写，你可以只检查一次单词的存在：
+        </p>
+        <pre class="brush: python">
+cond5 = 'password' not in password.lower()
+# you may transform string into uppercase with str.upper() as well. Then:
+cond5 = 'PASSWORD' not in password.upper()
+        </pre>
+        <p>
+            不要忘记将你的新条件添加到<b class="code">return</b> 中的<b class="code">all()</b> 函数中。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            那么，我的最终解决方案应该是什么样子的呢？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            这就是了：
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_acceptable_password(password: str) -> bool:
+
+    cond1 = len(password)> 6
+    cond2 = any(char.isdigit() for char in password)
+    cond3 = any(char.isalpha() for char in password)
+    if len(password)> 9: # cond4    
+        cond2 = cond3 = True
+    cond5 = 'password' not in password.lower()
+        
+    return all([cond1, cond2, cond3, cond5])
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            告诉我更多的解决方案!<br />
+            因为我想成为一个真正的🥇 Python Ninnjaa!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            当然，抓住它!
+        </p>
+        <p>
+            用相反的方式解决：检查每个条件，如果不是<b class="code">True</b> ，立即返回<b class="code">False</b> 。如果它们都是<b class="code">True</b> （你所需要的）--在最后返回<b class="code">True</b> ：
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_acceptable_password(password: str) -> bool:
+
+    if not len(password)> 6:
+        return False
+    if not len(password)> 9:
+        if not any(x.isdigit() for x in password):
+            return False
+        if not any(x.isalpha() for x in password):
+            return False
+    if 'password' in password.lower():
+        return False
+
+    return True
+        </pre>
+        </div>
+        <p>
+            所有的条件直接在<b class="code">return</b> 语句中，使用<b class="code">re</b> 模块查找数字和字母。<b class="code">find</b> 方法返回起始索引或-1，如果子串不在字符串中：
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def is_acceptable_password(password: str) -> bool:
+
+    return bool(
+        (len(password)> 6 and re.search('\d', password) and re.search('[a-zA-Z]', password) 
+        or len(password)> 9) 
+        and (password.lower().find('password')) == -1)  
+        </pre>
+        </div>
+        <p>
+            点击任务菜单中的<b>Best Solutions</b> ，可以看到很多其他有趣的解决方案!
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            谢谢!我现在知道并理解了更多!一切工作都很顺利!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            👍很高兴听到这个消息!尝试解决该系列的最后一个任务!
+        </p>
+    </div>
+</div>
+</body>
