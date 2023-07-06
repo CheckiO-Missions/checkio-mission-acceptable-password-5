@@ -1,0 +1,126 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我不知道如何开始解决这个任务。
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            让我们继续从该系列的前一个任务的提示中寻找解决方案。
+        </p>
+        <pre class="brush: javascript">
+function isAcceptablePassword(password: string): boolean {
+
+    const cond1 = password.length> 6;
+    var cond2 = /\d/.test(password);
+    var cond3 = /\D/.test(password);
+    if (password.length> 9) cond2 = cond3 = true; // cond 4
+    
+    return!([cond1, cond2, cond3].includes(false));
+}
+        </pre>
+        <p>
+            在这个任务中，你应该在你的解决方案中加入检查字符串中是否包括 "密码 "这个词。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            我应该从哪些方面入手？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            与之前寻找数字和非数字字符的方法一样，您可以在<b class="code">password</b> 。 
+        </p>
+        <pre class="brush: javascript">
+const cond5 = /password/.test(password);  
+        </pre>
+        <p>
+            
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            好的。但我用这种方式检查小写字母。如何检查大写字母，混合？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            为了使搜索不区分大小写，在模式中添加 "i "修饰符。你还应该反转结果，因为你不需要 "密码 "这个词出现。
+        </p>
+        <pre class="brush: javascript">
+const cond5 =!(/password/i.test(password));
+        </pre>
+        <p>
+            不要忘了把你的新条件添加到数组中，<b class="code">return</b> 。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            那么，我的最终解决方案应该是什么样子的呢？
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            这就是了：
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function isAcceptablePassword(password: string): boolean {
+
+    const cond1 = password.length> 6;
+    var cond2 = /\d/.test(password);
+    var cond3 = /\D/.test(password);
+    if (password.length> 9) cond2 = cond3 = true; // cond 4
+    const cond5 =!(/password/i.test(password));
+    
+    return!([cond1, cond2, cond3, cond5].includes(false));
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            告诉我更多的解决方案!<br />
+            因为我想成为一个真正的🥇 Javascript英雄!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            当然，抓住它!
+        </p>
+        <p>
+            这里是一个匿名函数，它检查长度是否超过9或数字和非数字是否存在以及长度是否超过6。此外，"密码 "一词在任何情况下都不存在。 
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var isAcceptablePassword = (p, l = p.length) => (l> 9 || /\d\D|\D\d/.test(p) && l> 6) &&!/password/i.test(p)
+        </pre>
+        </div>
+        <p>
+            点击任务菜单上的<b>Best Solutions</b> ，可以看到很多其他有趣的解决方案!
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            谢谢!我现在知道并理解了更多!一切工作都很顺利!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            👍很高兴听到这个消息!尝试解决该系列的最后一个任务!
+        </p>
+    </div>
+</div>
+</body>
