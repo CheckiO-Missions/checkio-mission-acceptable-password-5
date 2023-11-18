@@ -1,0 +1,126 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Lassen Sie uns mit der Lösung aus den Hinweisen der vorherigen Mission der Serie fortfahren.
+        </p>
+        <pre class="brush: javascript">
+function isAcceptablePassword(password: string): boolean {
+
+    const cond1 = password.length> 6;
+    var cond2 = /\d/.test(password);
+    var cond3 = /\D/.test(password);
+    if (password.length> 9) cond2 = cond3 = true; // cond 4
+    
+    return!([cond1, cond2, cond3].includes(false));
+}
+        </pre>
+        <p>
+            In dieser Aufgabe sollten Sie Ihre Lösung um die Prüfung ergänzen, ob die Zeichenkette in jedem Fall das Wort 'Passwort' enthält.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Womit soll ich anfangen?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Auf die gleiche Weise, wie Sie zuvor nach Ziffern und Nicht-Ziffern gesucht haben, können Sie auch nach dem Wort "Passwort" in <b class="code">password</b> suchen. 
+        </p>
+        <pre class="brush: javascript">
+const cond5 = /password/.test(password);  
+        </pre>
+        <p>
+            
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Nun gut. Aber ich überprüfe Kleinbuchstaben auf diese Weise. Wie prüft man Großbuchstaben, gemischt?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Um die Groß-/Kleinschreibung bei der Suche zu ignorieren, fügen Sie den Modifikator "i" zum Muster hinzu. Außerdem sollten Sie das Ergebnis invertieren, da das Wort "password" NICHT enthalten sein muss.
+        </p>
+        <pre class="brush: javascript">
+const cond5 =!(/password/i.test(password));
+        </pre>
+        <p>
+            Und vergessen Sie nicht, Ihre neue Bedingung in das Array in <b class="code">return</b> einzufügen.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Wie sollte also meine endgültige Lösung aussehen?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Hier ist sie:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+function isAcceptablePassword(password: string): boolean {
+
+    const cond1 = password.length> 6;
+    var cond2 = /\d/.test(password);
+    var cond3 = /\D/.test(password);
+    if (password.length> 9) cond2 = cond3 = true; // cond 4
+    const cond5 =!(/password/i.test(password));
+    
+    return!([cond1, cond2, cond3, cond5].includes(false));
+}
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Zeigen Sie mir mehr Lösungen!<br />
+            denn ich möchte ein echter 🥇 Javascript-Held sein!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Klar, schnappen Sie es sich!
+        </p>
+        <p>
+            Hier ist eine anonyme Funktion, die prüft, ob die Länge mehr als 9 beträgt ODER ob eine Ziffer und eine Nicht-Ziffer vorhanden ist UND ob die Länge mehr als 6 beträgt. Außerdem darf das Wort "Passwort" in keinem Fall vorhanden sein. 
+        </p>
+        <div class="spoiler">
+        <pre class="brush: javascript">
+var isAcceptablePassword = (p, l = p.length) => (l> 9 || /\d\D|\D\d/.test(p) && l> 6) &&!/password/i.test(p)
+        </pre>
+        </div>
+        <p>
+            Klicken Sie auf <b>Best Solutions</b> im Menü Mission und sehen Sie sich viele andere interessante Lösungen an!
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Danke! Ich weiß und verstehe jetzt mehr! Alles funktioniert bestens!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            👍 Freut mich zu hören! Versuchen Sie, die letzte Mission der Serie zu lösen!
+        </p>
+    </div>
+</div>
+</body>

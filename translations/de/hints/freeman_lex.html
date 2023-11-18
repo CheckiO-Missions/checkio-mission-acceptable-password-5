@@ -1,0 +1,155 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Lassen Sie uns mit der Lösung aus den Hinweisen der vorherigen Mission der Serie fortfahren.
+        </p>
+        <pre class="brush: python">
+def is_acceptable_password(password: str) -> bool:
+
+    cond1 = len(password)> 6
+    cond2 = any(char.isdigit() for char in password)
+    cond3 = any(char.isalpha() for char in password)
+    if len(password)> 9: # cond4    
+        cond2 = cond3 = True
+
+    return all([cond1, cond2, cond3]) 
+        </pre>
+        <p>
+            In dieser Mission sollten Sie zusätzlich zu dieser Lösung prüfen, ob Ihre Zeichenkette auf jeden Fall aus dem Wort 'Passwort' besteht.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Womit soll ich anfangen?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Um zu prüfen, ob eine Zeichenkette Teil einer anderen ist, können Sie einfach den <b class="code">in</b> Operator verwenden:
+        </p>
+        <pre class="brush: python">
+'password' in password
+# since you need word 'password' not to be present, above checking will be:
+'password' not in password        
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Ok. Aber ich prüfe Kleinbuchstaben auf diese Weise. Wie prüfe ich Großbuchstaben, gemischt?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Sie müssen nicht alle Fälle prüfen. Verwenden Sie die String-Methode <a target="_blank" href="https://www.w3schools.com/python/ref_string_lower.asp">str.lower()</a>. Sie wandelt die Zeichenkette in Kleinbuchstaben um und Sie können das Vorhandensein von Wörtern nur einmal überprüfen:
+        </p>
+        <pre class="brush: python">
+cond5 = 'password' not in password.lower()
+# you may transform string into uppercase with str.upper() as well. Then:
+cond5 = 'PASSWORD' not in password.upper()
+        </pre>
+        <p>
+            Und vergessen Sie nicht, Ihre neue Bedingung in die Funktion <b class="code">all()</b> in <b class="code">return</b> einzufügen.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Wie sollte also meine endgültige Lösung aussehen?
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Hier ist sie:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_acceptable_password(password: str) -> bool:
+
+    cond1 = len(password)> 6
+    cond2 = any(char.isdigit() for char in password)
+    cond3 = any(char.isalpha() for char in password)
+    if len(password)> 9: # cond4    
+        cond2 = cond3 = True
+    cond5 = 'password' not in password.lower()
+        
+    return all([cond1, cond2, cond3, cond5])
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Zeigen Sie mir mehr Lösungen!<br />
+            denn ich will eine echte 🥇 Python Ninnjaa sein!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            Klar, schnapp sie dir!
+        </p>
+        <p>
+            Lösung mit umgekehrtem Stil: Überprüfung jeder Bedingung, wenn sie nicht <b class="code">True</b> ist, sofortige <b class="code">False</b> Rückgabe. Wenn sie alle <b class="code">True</b> sind (was Sie brauchen), geben Sie am Ende <b class="code">True</b> zurück:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def is_acceptable_password(password: str) -> bool:
+
+    if not len(password)> 6:
+        return False
+    if not len(password)> 9:
+        if not any(x.isdigit() for x in password):
+            return False
+        if not any(x.isalpha() for x in password):
+            return False
+    if 'password' in password.lower():
+        return False
+
+    return True
+        </pre>
+        </div>
+        <p>
+            Alle Bedingungen direkt in der Anweisung <b class="code">return</b> mit dem Modul <b class="code">re</b> für die Suche nach Ziffern und Buchstaben. Die Methode <b class="code">find</b> gibt den Startindex oder -1 zurück, wenn die Teilzeichenkette nicht in der Zeichenkette enthalten ist:
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+import re
+
+
+def is_acceptable_password(password: str) -> bool:
+
+    return bool(
+        (len(password)> 6 and re.search('\d', password) and re.search('[a-zA-Z]', password) 
+        or len(password)> 9) 
+        and (password.lower().find('password')) == -1)  
+        </pre>
+        </div>
+        <p>
+            Klicken Sie auf <b>Best Solutions</b> im Menü Mission und sehen Sie sich viele weitere interessante Lösungen an!
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>
+            Danke! Ich weiß und verstehe jetzt mehr! Alles funktioniert bestens!
+        </p>
+    </div>
+    <div class="answer">
+        <p>
+            👍 Freut mich zu hören! Versuchen Sie, die letzte Mission der Serie zu lösen!
+        </p>
+    </div>
+</div>
+</body>
